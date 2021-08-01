@@ -1,0 +1,42 @@
+<div class="columns">
+  <div class="column">
+    <div class="column">
+      <button class="button is-info mr-3" [appSort]="membersList" data-order="desc" data-name="level">Sort by level</button>
+      <button class="button is-info mr-3" [appSort]="membersList" data-order="desc" data-name="rpForFaction">Sort by respect</button>
+      <button class="button is-info" [appSort]="membersList" data-order="desc" data-name="daysInFaction">Sort by days in faction</button>
+    </div>
+    <div class="card events-card">
+      <header class="card-header">
+        <p class="card-header-title">
+          Member list
+        </p>
+      </header>
+      <div class="card-table">
+        <div class="content">
+          <table class="table is-fullwidth is-striped">
+            <thead>
+            <th width="5%">Lp</th>
+            <th>Name</th>
+            <th>Level</th>
+            <th>Days in faction</th>
+            <th>Respect</th>
+            <th>Action</th>
+            </thead>
+            <tbody>
+            <tr *ngFor="let member of membersList; let i = index">
+              <td width="5%">{{i+1}}</td>
+              <td>{{member.username}}</td>
+              <td>{{member.level}}</td>
+              <td>{{member.daysInFaction}}</td>
+              <td>{{member.rpForFaction}}</td>
+              <td>
+                <a class="button is-small is-info" href="https://www.torn.com/profiles.php?XID={{member.tornId}}">Profile</a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

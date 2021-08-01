@@ -1,0 +1,33 @@
+<div class="columns" *ngIf="yeetList.length > 0">
+  <div class="column">
+    <div class="card events-card">
+      <header class="card-header">
+        <p class="card-header-title">
+          Yeet list
+        </p>
+      </header>
+      <div class="card-table">
+        <div class="content">
+          <table class="table is-fullwidth is-striped">
+            <thead>
+            <th width="5%">Lp</th>
+            <th>Name</th>
+            <th>Days in faction</th>
+            <th>Inactive days</th>
+            <th>Action</th>
+            </thead>
+            <tbody>
+            <tr *ngFor="let yeetMember of yeetList; let i = index">
+              <td width="5%">{{i+1}}</td>
+              <td>{{yeetMember.username}}</td>
+              <td>{{yeetMember.daysInFaction}}</td>
+              <td>{{yeetMember.lastAction}}</td>
+              <td><a href="https://www.torn.com/factions.php?step=your#/tab=controls&option=members">Go to faction</a></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

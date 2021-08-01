@@ -1,0 +1,113 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Clockwork Orange - members list</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+</head>
+
+<body>
+<nav class="navbar is-white">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="">
+        Clockwork Orange - council administration panel
+      </a>
+    </div>
+  </div>
+</nav>
+<!-- END NAV -->
+<div class="container is-fullheight">
+  <div class="columns">
+    <div class="column is-3">
+      <app-navigation></app-navigation>
+    </div>
+    <div class="column is-9">
+      <nav class="breadcrumb" aria-label="breadcrumbs">
+        <!--       TODO: breadcrumb-->
+        <ul>
+          <li><a href="../">todo</a></li>
+          <li><a href="../">todo</a></li>
+          <li><a href="../">Examples</a></li>
+        </ul>
+      </nav>
+      <div class="columns">
+        <div class="column">
+          <div class="content">
+            <h1>Events</h1>
+            <table>
+              <thead>
+              <tr>
+                <th>Event</th>
+                <th>Description</th>
+                <th>TCT [Day.Month.Year Hours:Minutes]</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let event of eventsList">
+                <td>{{event.title}}</td>
+                <td>{{event.description}}</td>
+                <td (click)="changeTodayDate(event.eventDate)">{{event.eventDate | date:'dd.MM.yyyy HH:mm' :'UTC +0'}}</td>
+                <td *ngIf="event.eventDate < nowDate">OLD EVENT</td>
+              </tr>
+              </tbody>
+            </table>
+            <button class="button" (click)="clearOldEvents()">Clear old events</button>
+            <h1>Add event</h1>
+            <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+              <div class="field">
+                <label class="label">Event title</label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="Event title" formControlName="title">
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Description</label>
+                <div class="control">
+                  <textarea class="textarea" placeholder="Description" formControlName="description"></textarea>
+                </div>
+              </div>
+              <input type="datetime-local" id="eventDate" formControlName="eventDate" min="{{dateToCheckTimezones | date: 'dd.MM.yyyy HH:mm'}}"><br>
+              <div class="control">
+                <input class="button is-link" type="submit" value="Submit">
+              </div>
+            </form>
+            <h1>Timezone of event</h1>
+            <table>
+              <tbody>
+              <tr>
+                <th scope="row">TCT-3</th>
+                <td>{{dateToCheckTimezones | date:'HH:mm' :'UTC -3'}}</td>
+                <td>RubyRoo</td>
+              </tr>
+              <tr>
+                <th scope="row">TCT</th>
+                <td>{{dateToCheckTimezones | date:'HH:mm' :'UTC +0'}}</td>
+                <td>---</td>
+              </tr>
+              <tr>
+                <th scope="row">TCT+1</th>
+                <td>{{dateToCheckTimezones | date:'HH:mm' :'UTC +1'}}</td>
+                <td>799, PhishFood, Turd_knocker</td>
+              </tr>
+              <tr>
+                <th scope="row">TCT+7</th>
+                <td>{{dateToCheckTimezones | date:'HH:mm' :'UTC +7'}}</td>
+                <td>Chazoid</td>
+              </tr>
+              <tr>
+                <th scope="row">TCT+8</th>
+                <td>{{dateToCheckTimezones | date:'HH:mm' :'UTC +8'}}</td>
+                <td>ShadowSquid, jrs000</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script async type="text/javascript" src="../js/bulma.js"></script>
+</body>
