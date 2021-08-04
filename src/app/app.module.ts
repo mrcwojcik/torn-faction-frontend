@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import {RouterModule, Routes} from '@angular/router';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
-import { LoginComponent } from './login/login.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import {HttpService} from "./services/http.service";
 import {HttpClientModule} from "@angular/common/http";
@@ -25,7 +24,6 @@ const appRoutes: Routes = [
   { path: 'members', component: MembersSubpageComponent },
   { path: 'yeet', component: YeetSubpageComponent },
   { path: 'events', component: EventsComponent},
-  { path: '', component: LoginComponent },
   { path: 'notfound', component: NotfoundComponent },
   { path: '**', redirectTo: '/notfound' },
 ];
@@ -34,7 +32,6 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     DashboardComponent,
-    LoginComponent,
     NotfoundComponent,
     NavigationComponent,
     MembersListComponent,
@@ -51,7 +48,6 @@ const appRoutes: Routes = [
             {path: 'members', component: MembersSubpageComponent},
             {path: 'yeet', component: YeetSubpageComponent},
             {path: 'events', component: EventsComponent},
-            {path: '', component: LoginComponent},
             {path: 'notfound', component: NotfoundComponent},
             {path: '**', redirectTo: '/notfound'},
         ]),
