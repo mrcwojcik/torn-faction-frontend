@@ -18,6 +18,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { EventsComponent } from './admin/events/events.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -25,6 +26,7 @@ const appRoutes: Routes = [
   { path: 'yeet', component: YeetSubpageComponent },
   { path: 'events', component: EventsComponent},
   { path: 'notfound', component: NotfoundComponent },
+  { path: 'login', component: LoginComponent},
   { path: '**', redirectTo: '/notfound' },
 ];
 
@@ -40,6 +42,7 @@ const appRoutes: Routes = [
     SortDirective,
     YeetSubpageComponent,
     EventsComponent,
+    LoginComponent,
   ],
     imports: [
         BrowserModule,
@@ -49,6 +52,7 @@ const appRoutes: Routes = [
             {path: 'yeet', component: YeetSubpageComponent},
             {path: 'events', component: EventsComponent},
             {path: 'notfound', component: NotfoundComponent},
+            {path: 'login', component: LoginComponent},
             {path: '**', redirectTo: '/notfound'},
         ]),
         HttpClientModule,
