@@ -12,7 +12,6 @@ export class EventsComponent implements OnInit {
 
   nowDate : Date = new Date();
   dateToCheckTimezones : Date = new Date();
-  eventDate : Date = new Date();
   checkoutForm = this.formBuilder.group({
     title: '',
     description: '',
@@ -23,12 +22,11 @@ export class EventsComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private httpService: HttpService) {
     this.httpService.getEventList().subscribe((events: Array<Event>) => {
       events.forEach(event => {
-        this.eventDate = new Date(event.eventDate);
         let Event = {
           id: event.id,
           title: event.title,
           description: event.description,
-          eventDate: this.eventDate
+          eventDate: new Date(event.eventDate.valueOf() * 1000)
         }
         this.eventsList.push(Event);
       })
@@ -39,7 +37,7 @@ export class EventsComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const Event = this.checkoutForm.value;
+    let Event = this.checkoutForm.value;
     this.httpService.addEvent(Event).subscribe();
     this.checkoutForm.reset();
     window.location.reload();
@@ -54,4 +52,11 @@ export class EventsComponent implements OnInit {
     this.httpService.deleteOldEvents().subscribe();
     window.location.reload();
   }
+
+  deleteEvent(id: number){
+    console.log(id);
+    this.httpService.deleteEvent(id).subscribe();
+    window.location.reload();
+  }
+
 }

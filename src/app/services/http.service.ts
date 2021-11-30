@@ -33,4 +33,34 @@ export class HttpService {
     return this.http.get<Array<Event>>(this.API_URL + '/api/events/clear');
   }
 
+  deleteEvent(id: number): Observable<Array<Event>>{
+    return this.http.get<Array<Event>>(this.API_URL + '/api/event/delete/' + id);
+  }
+
+  updateFaction(): Observable<Faction>{
+    return this.http.get<Faction>(this.API_URL + "/api/faction/update");
+  }
+
+  updateMembers(): Observable<Array<Member>>{
+    return this.http.get<Array<Member>>(this.API_URL + '/api/members/update', {
+      // @ts-ignore
+      headers: {'key': sessionStorage.getItem('apiKey').toString()}
+    })
+  }
+
+  update(): Observable<Array<Member>>{
+    return this.http.get<Array<Member>>(this.API_URL + '/api/update', {
+      // @ts-ignore
+      headers: {'apiKey': sessionStorage.getItem('apiKey').toString()}
+    })
+  }
+
+  getMeritList(): Observable<Array<Member>>{
+    return this.http.get<Array<Member>>(this.API_URL + '/api/merit');
+  }
+
+  login(apiKey: String): Observable<Member>{
+    return this.http.get<Member>(this.API_URL + '/api/login/' + apiKey)
+  }
+
 }

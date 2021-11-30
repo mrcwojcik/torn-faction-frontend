@@ -19,16 +19,12 @@ import { EventsComponent } from './admin/events/events.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LoginComponent } from './login/login.component';
-
-const appRoutes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'members', component: MembersSubpageComponent },
-  { path: 'yeet', component: YeetSubpageComponent },
-  { path: 'events', component: EventsComponent},
-  { path: 'notfound', component: NotfoundComponent },
-  { path: 'login', component: LoginComponent},
-  { path: '**', redirectTo: '/notfound' },
-];
+import { SettingsComponent } from './admin/settings/settings.component';
+import { WelcomemessageComponent } from './admin/docs/welcomemessage/welcomemessage.component';
+import { MeritComponent } from './admin/merit/merit.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSort, MatSortHeader, MatSortModule} from "@angular/material/sort";
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -43,23 +39,33 @@ const appRoutes: Routes = [
     YeetSubpageComponent,
     EventsComponent,
     LoginComponent,
+    SettingsComponent,
+    WelcomemessageComponent,
+    MeritComponent,
   ],
     imports: [
         BrowserModule,
         RouterModule.forRoot([
+            {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
             {path: 'dashboard', component: DashboardComponent},
             {path: 'members', component: MembersSubpageComponent},
             {path: 'yeet', component: YeetSubpageComponent},
             {path: 'events', component: EventsComponent},
             {path: 'notfound', component: NotfoundComponent},
             {path: 'login', component: LoginComponent},
+            {path: 'settings', component: SettingsComponent},
+            {path: 'welcome', component: WelcomemessageComponent},
+            {path: 'merit', component: MeritComponent},
             {path: '**', redirectTo: '/notfound'},
         ]),
         HttpClientModule,
         CalendarModule.forRoot({provide: DateAdapter, useFactory: adapterFactory}),
         NgbModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        MatSortModule,
+        MatTableModule
     ],
   providers: [HttpService],
   bootstrap: [AppComponent]

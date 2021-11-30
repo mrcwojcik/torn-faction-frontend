@@ -41,6 +41,7 @@
                 <th>Event</th>
                 <th>Description</th>
                 <th>TCT [Day.Month.Year Hours:Minutes]</th>
+                <th>Delete</th>
               </tr>
               </thead>
               <tbody>
@@ -48,6 +49,7 @@
                 <td>{{event.title}}</td>
                 <td>{{event.description}}</td>
                 <td (click)="changeTodayDate(event.eventDate)">{{event.eventDate | date:'dd.MM.yyyy HH:mm' :'UTC +0'}}</td>
+                <td><a (click)="deleteEvent(event.id)">Delete</a></td>
                 <td *ngIf="event.eventDate < nowDate">OLD EVENT</td>
               </tr>
               </tbody>

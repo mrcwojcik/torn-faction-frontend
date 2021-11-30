@@ -1,41 +1,19 @@
-<!-- TODO: LINKS -->
 <aside class="menu is-hidden-mobile">
   <p class="menu-label">
     Shorts
   </p>
   <ul class="menu-list">
-    <li><a class="is-active">Members</a></li>
-    <li><a>Yeet list</a></li>
-    <li><a>Events</a></li>
-  </ul>
-  <p class="menu-label">
-    Administration
-  </p>
-  <ul class="menu-list">
-    <li>
-      <a>Members</a>
-      <ul>
-        <li><a>Members list</a></li>
-        <li><a>Yeet list</a></li>
-        <li><a>Company owners</a></li>
-      </ul>
-    </li>
-    <li>
-      <a>Events</a>
-      <ul>
-        <li><a>Calendar</a></li>
-        <li><a>Add event</a></li>
-      </ul>
-    </li>
-
+    <li><a routerLink="/dashboard" [routerLinkActive]="'is-active'">Dashboard</a></li>
+    <li><a routerLink="/merit" [routerLinkActive]="'is-active'">Merit list</a></li>
+    <li><a routerLink="/events" [routerLinkActive]="'is-active'">Events</a></li>
   </ul>
   <p class="menu-label">
     Docs
   </p>
   <ul class="menu-list">
-    <li><a>Welcome mail</a></li>
-    <li><a>Recruiting thread</a></li>
-    <li><a>List of useful guides</a></li>
-    <li><a>Bot commands</a></li>
+    <li><a routerLink="/welcome" [routerLinkActive]="'is-active'">Welcome message</a></li>
+  </ul>
+  <ul class="menu-list">
+    <li><a (click)="logout()">Logut</a></li>
   </ul>
 </aside>

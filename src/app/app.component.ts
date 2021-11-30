@@ -25,9 +25,11 @@ export interface Member {
   rpForFaction: number;
   daysInFaction: number;
   level: number;
-  yellowFlag: number;
+  roles: string;
   yeet: boolean;
   lastAction: number;
+  distanceToMerit?: number;
+  closestMerit?: number;
 }
 
 export interface Event {

@@ -24,11 +24,8 @@
    </div>
     <div class="column is-9">
       <nav class="breadcrumb" aria-label="breadcrumbs">
-<!--       TODO: breadcrumb-->
         <ul>
-          <li><a href="../">todo</a></li>
-          <li><a href="../">todo</a></li>
-          <li><a href="../">Examples</a></li>
+          <li><a routerLink="{{currentPage}}">{{currentPage}}</a></li>
         </ul>
       </nav>
       <section class="info-tiles">
@@ -59,6 +56,11 @@
           </div>
         </div>
       </section>
+      <div class="column">
+<!--        <button class="button is-danger mr-3" (click)="updateFaction()">Update faction info</button>-->
+<!--        <button class="button is-danger mr-3" (click)="updateMembers($event)">Update members</button>-->
+        <button class="button is-danger mr-3" (click)="update($event)">Update all</button>
+      </div>
       <app-yeet-list></app-yeet-list>
       <app-members-list></app-members-list>
     </div>
